@@ -74,11 +74,17 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
   
   while (tree-> current != NULL)
   {
-    if(1 == is_equal(tree, key, tree-> current-> pair-> key))
+    int compare = is_equal(tree, key, tree -> current -> pair -> key);
+
+    if (compare == 1)
     {
-      return tree-> current-> pair;
+      return tree -> current -> pair;
     }
-    return NULL;
+    else
+    {
+      return NULL;
+    }
+    
   }
   
   return NULL;
