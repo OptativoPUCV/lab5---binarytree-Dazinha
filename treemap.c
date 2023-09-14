@@ -63,14 +63,23 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 Recuerde hacer que el current apunte al nodo encontrado.
 */
 //if (searchTreeMap(tree, key) == NULL
-
+//is_equal(TreeMap* tree, void* key1, void* key2) return 1, else return 0
 Pair * searchTreeMap(TreeMap * tree, void* key) {
   if (key == NULL || tree == NULL)
   {
     return NULL;
   }
 
+  tree -> current = tree -> root;
   
+  while (tree-> current != NULL)
+  {
+    if(1 == is_equal(tree, key, tree-> current-> pair-> key))
+    {
+      return tree-> current-> pair;
+    }
+    return NULL;
+  }
   
   return NULL;
 }
@@ -88,6 +97,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   }
 
   
+  
 }
 
 /*
@@ -95,8 +105,13 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 */
 
 TreeNode * minimum(TreeNode * x){
-
+  if (x == NULL)
+  {
     return NULL;
+  }
+
+  
+  
 }
 
 /*
@@ -107,7 +122,11 @@ TreeNode * minimum(TreeNode * x){
 */
 
 void removeNode(TreeMap * tree, TreeNode* node) {
-
+  if(tree == NULL || node == NULL)
+  {
+    return;
+  }
+  
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
@@ -124,11 +143,21 @@ void eraseTreeMap(TreeMap * tree, void* key){
 */
 
 Pair * firstTreeMap(TreeMap * tree) {
+  if (tree == NULL)
+  {
     return NULL;
+  }
+
+  return NULL;
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
+  if (tree == NULL)
+  {
     return NULL;
+  }
+
+  return NULL;
 }
 
 
@@ -139,6 +168,12 @@ Para implementarla puede realizar una búsqueda normal y usar un puntero a nodo 
 
 
 Pair * upperBound(TreeMap * tree, void* key) {
+  if (tree == NULL || key == NULL)
+  {
     return NULL;
+  }
+
+  
+  return NULL;
 }
 
