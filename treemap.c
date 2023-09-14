@@ -51,9 +51,10 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
   }
 
   map -> root = NULL;
+
+  //map->lower_than = lower_than;
   map-> lower_than = lower_than;
   
-  //map->lower_than = lower_than;
   return map;
 }
 
@@ -61,10 +62,17 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 2.- Implemente la función Pair* searchTreeMap(TreeMap* tree, void* key), la cual busca el nodo con clave igual a key y retorna el **Pair** asociado al nodo. Si no se encuentra la clave retorna NULL.
 Recuerde hacer que el current apunte al nodo encontrado.
 */
-
+//if (searchTreeMap(tree, key) == NULL
 
 Pair * searchTreeMap(TreeMap * tree, void* key) {
+  if (key == NULL || tree == NULL)
+  {
     return NULL;
+  }
+
+  
+  
+  return NULL;
 }
 
 /*
@@ -74,7 +82,12 @@ Para insertar un dato, primero debe realizar una búsqueda para encontrar donde 
 
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
+  if (tree == NULL || key == NULL || value == NULL)
+  {
+    return;
+  }
 
+  
 }
 
 /*
