@@ -192,8 +192,6 @@ TreeNode * minimum(TreeNode * x){
     return NULL;
   }
 
-  int current = tree -> x;
-
   
 
   

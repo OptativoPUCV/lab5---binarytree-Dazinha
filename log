@@ -229,3 +229,9 @@ treemap.c:195:7: error: unused variable ‘current’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 8b51ffc
+Fri 15 Sep 2023 10:41:16 PM UTC: 
+ treemap.c | 2 --
+ 1 file changed, 2 deletions(-)
+ tests:  10|6
+total_score: 15/70
+7f160d4
