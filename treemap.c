@@ -153,7 +153,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   }
 
   //inserción en parent
-
+  /*
   if(parent == NULL)
   {
     tree -> root = newNode;
@@ -172,7 +172,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     }
     
   }
-  
+  */
   tree -> current = newNode;
 }
   

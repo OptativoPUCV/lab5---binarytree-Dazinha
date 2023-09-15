@@ -162,3 +162,14 @@ Fri 15 Sep 2023 09:52:04 PM UTC:
  tests:  12|6
 total_score: 15/70
 3a68941
+Fri 15 Sep 2023 10:03:37 PM UTC: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:135:14: error: variable ‘parent’ set but not used [-Werror=unused-but-set-variable]
+  135 |   TreeNode * parent = NULL;
+      |              ^~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+2b5a609
