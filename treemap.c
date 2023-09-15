@@ -163,15 +163,15 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 
     if(compare == 1)
     {
-      parent -> left = newnode;
+      parent -> left = newNode;
     }
     else{
-      parent -> right = newnode;
+      parent -> right = newNode;
     }
     
   }
   
-  tree -> current = newNode;
+
 }
   
 

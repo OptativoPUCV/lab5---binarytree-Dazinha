@@ -123,3 +123,8 @@ treemap.c:166:24: error: ‘newnode’ undeclared (first use in this function); 
 treemap.c:166:24: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 68dfe5b
+Fri 15 Sep 2023 09:15:48 PM UTC: 
+ treemap.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+ tests:  0|0
+8626a26
