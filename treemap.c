@@ -100,16 +100,16 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
     //key1 = key
     //key2 = tree-> current-> pair-> key
     
-    if(compare == 1)
-    {
-      tree -> current = tree -> current -> left; 
+    if (compare == 0) {
+      if (is_equal(tree, key, tree->current->pair->key) == 1) {
+        return tree->current->pair;
+      }
+      tree->current = tree->current->right; 
+    } else if (compare == 1) {
+      tree->current = tree->current->left;
+    } else {
+      tree->current = tree->current->right;
     }
-    else if (compare == 0)
-    {
-      if (is_equal(tree, key, tree -> current -> pair -> key) == 1)
-      return tree -> current -> pair;
-    }
-    tree->current = tree->current->right;
   }
   
   return NULL;
