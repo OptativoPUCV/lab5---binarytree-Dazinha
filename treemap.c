@@ -85,13 +85,13 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
     {
       return tree -> current -> pair;
     }
-    else if (compare < 0)
+    else if (compare > 0)
     {
-      tree -> current = tree -> current -> left;
+      tree -> current = tree -> current -> right;
     }
     else
     {
-      tree -> current = tree -> current -> right;
+      tree -> current = tree -> current -> left;
     }
     
   }
