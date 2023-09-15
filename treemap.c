@@ -212,7 +212,8 @@ void removeNode(TreeMap * tree, TreeNode* node) {
 
   //CASO SIN HIJOS
   if (node -> left == NULL && node -> right == NULL)
-  {
+  { //es la raiz
+    /*
     if (node -> parent == NULL)
     {
       tree -> root = NULL;
@@ -228,6 +229,15 @@ void removeNode(TreeMap * tree, TreeNode* node) {
       
     }
     free(node);
+    */
+    if (node->parent != NULL) {
+        // El nodo tiene un padre, simplemente liberamos el nodo
+        free(node);
+    } else {
+        // El nodo es la raíz del árbol
+        tree->root = NULL;
+        free(node);
+    }
   }
   
 }
