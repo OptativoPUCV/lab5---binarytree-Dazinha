@@ -129,15 +129,9 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   }
   //NO INSERTA DATO REPETIDO
   */
-  
-  TreeNode * newNode = createTreeNode(key, value);
-  if (newNode == NULL)
-  {
-    return;
-  }
 
   TreeNode *current = tree -> root;
-  TreeNode * parent = NULL;
+  TreeNode *parent = NULL;
   
   //búsqueda y actualización de parent y tree -> current
   while (current != NULL)
@@ -150,7 +144,10 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
       current = current -> left;
       
     }
-
+    else if (current == 0)
+    {
+      return;
+    }
     else
     {
       current = current -> right;
@@ -158,7 +155,8 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   }
 
   //inserción en parent
-
+  TreeNode * newNode = createTreeNode(key, value);
+  
   if(parent == NULL)
   {
     tree -> root = newNode;
