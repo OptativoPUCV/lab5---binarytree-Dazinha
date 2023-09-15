@@ -158,7 +158,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     tree -> root = newNode;
   }
   else{
-    int compare = tree -> lower_than(key , tree -> current -> pair -> key);
+    int compare = tree -> lower_than(key , parent -> pair -> key);
 
     if(compare == 1)
     {
