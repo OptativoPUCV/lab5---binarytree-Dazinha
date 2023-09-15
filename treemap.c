@@ -119,7 +119,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   //genera un par y vemos si existe en el mapa
   Pair *aux = searchTreeMap(tree, key);
 
-  if (aux == tree -> current -> pair)
+  if (aux != NULL)
   {
     return;
   }
@@ -136,18 +136,17 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   //búsqueda y actualización de parent y tree -> current
   while (tree -> current != NULL)
   {
+    parent = tree -> current;
     int compare = tree -> lower_than(key , tree -> current -> pair -> key);
 
     if (compare == 1)
     {
-      parent = tree -> current;
       tree -> current = tree -> current -> left;
       
     }
 
     else if (compare == 0)
     {
-      parent = tree -> current;
       tree -> current = tree -> current -> right;
     }  
   }
