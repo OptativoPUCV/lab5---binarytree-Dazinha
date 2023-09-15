@@ -145,7 +145,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
       
     }
 
-    else if (compare == 0)
+    else
     {
       tree -> current = tree -> current -> right;
     }  
@@ -157,14 +157,16 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   {
     tree -> root = newNode;
   }
-  else{
+  else
+  {
     int compare = tree -> lower_than(key , parent -> pair -> key);
 
     if(compare == 1)
     {
       parent -> left = newNode;
     }
-    else{
+    else
+    {
       parent -> right = newNode;
     }
     
