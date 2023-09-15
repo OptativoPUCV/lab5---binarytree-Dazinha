@@ -20,9 +20,14 @@ struct TreeMap {
 };
 
 int is_equal(TreeMap* tree, void* key1, void* key2){
-    if(tree->lower_than(key1,key2)==0 &&  
-        tree->lower_than(key2,key1)==0) return 1;
-    else return 0;
+  if(tree->lower_than(key1,key2)==0 && tree->lower_than(key2,key1)==0)
+  {
+    return 1;
+  }
+  else 
+  {
+    return 0;
+  }
 }
 
 
@@ -72,17 +77,24 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 
   tree -> current = tree -> root;
   
-  while (tree-> current != NULL)
+  while (tree -> current != NULL)
   {
-    int compare = is_equal(tree, key, tree -> current -> pair -> key);
+    int compare = tree->lower_than(key, tree->current->pair->key);
 
-    if (compare == 1)
+    if(compare == 0)
     {
+      tree -> current = tree -> current;
       return tree -> current -> pair;
     }
-    else
+
+    if (compare < 0)
     {
-      return NULL;
+      tree -> current = tree -> current -> left;
+    }
+
+    if (compare > 0)
+    {
+      tree -> current = tree -> current -> right;
     }
     
   }
