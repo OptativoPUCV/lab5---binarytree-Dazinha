@@ -142,13 +142,13 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 
     if (compare == 1)
     {
-      current = tree -> current -> left;
+      current = current -> left;
       
     }
 
     else
     {
-      current = tree -> current -> right;
+      current = current -> right;
     }  
   }
 
@@ -173,7 +173,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     
   }
 
-  tree -> current = newNode;
+  //tree -> current = newNode;
 }
   
 
