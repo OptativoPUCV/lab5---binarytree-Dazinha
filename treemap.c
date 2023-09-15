@@ -111,6 +111,62 @@ Para insertar un dato, primero debe realizar una búsqueda para encontrar donde 
 //is_equal(TreeMap* tree, void* key1, void* key2) return 1, else return 0
 //tree -> lower_than retorna 1 si key1<key2 y 0 si no
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
+  if (tree == NULL || key == NULL || value == NULL) {
+    return;
+  }
+
+  // Verificar si la clave ya existe en el mapa
+  Pair *aux = searchTreeMap(tree, key);
+
+  if (aux != NULL) {
+    return; // Clave duplicada, no hacemos nada
+  }
+
+  TreeNode * newNode = createTreeNode(key, value);
+  if (newNode == NULL) {
+    return; // Error al crear el nodo, no hacemos nada
+  }
+
+  tree->current = tree->root;
+  TreeNode * parent = NULL;
+  
+  // Búsqueda y actualización de parent y current
+  while (tree->current != NULL) {
+    parent = tree->current;
+    int compare = tree->lower_than(key , tree->current->pair->key);
+
+    if (compare == 1) {
+      tree->current = tree->current->left;
+    } else {
+      tree->current = tree->current->right;
+    }  
+  }
+
+  // Inserción en parent
+
+  if(parent == NULL)
+  {
+    tree->root = newNode;
+  }
+  else
+  {
+    int compare = tree->lower_than(key , parent->pair->key);
+
+    if(compare == 1)
+    {
+      parent->left = newNode;
+    }
+    else
+    {
+      parent->right = newNode;
+    }
+  }
+
+  tree->current = newNode;
+}
+
+/*
+void insertTreeMap(TreeMap * tree, void* key, void * value) {
   if (tree == NULL || key == NULL || value == NULL)
   {
     return;
@@ -175,7 +231,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 
   //tree -> current = newNode;
 }
-  
+*/
 
 /*
 4.- Implemente la función TreeNode * minimum(TreeNode * x). Esta función retorna el **nodo con la mínima clave** ubicado en el subárbol con raiz x. Para obtener el nodo tiene que, a partir del nodo x, irse por la rama izquierda hasta llegar al final del subárbol. Si x no tiene hijo izquierdo se retorna el mismo nodo.
