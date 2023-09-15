@@ -270,15 +270,16 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         node->parent->right = son;
       }
         son->parent = node->parent;
-      }
     }
     else 
     {
+      
       tree->root = son;
       son->parent = NULL;
     }
+  
     free(node);
-
+  }
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){

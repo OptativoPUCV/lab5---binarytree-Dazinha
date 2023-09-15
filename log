@@ -317,3 +317,8 @@ treemap.c:277:20: error: ‘son’ undeclared (first use in this function)
 treemap.c:277:20: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 e65f94d
+Fri 15 Sep 2023 11:51:43 PM UTC: 
+ treemap.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+ tests:  0|0
+f4b93cc
