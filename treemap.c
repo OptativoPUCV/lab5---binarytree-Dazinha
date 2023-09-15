@@ -131,7 +131,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     return;
   }
 
-  tree -> current = tree -> root;
+  TreeNode *current = tree -> root;
   TreeNode * parent = NULL;
   
   //búsqueda y actualización de parent y tree -> current
