@@ -118,17 +118,14 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   {
     return;
   }
+  
+  TreeNode * newNode = createTreeNode(key, value);
 
-  /*
-  //genera un par y vemos si existe en el mapa
-  Pair *aux = searchTreeMap(tree, key);
-
-  if (aux != NULL)
+  if (newNode != NULL)
   {
     return;
   }
   //NO INSERTA DATO REPETIDO
-  */
 
   TreeNode *current = tree -> root;
   TreeNode *parent = NULL;
@@ -155,7 +152,8 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   }
 
   //inserción en parent
-  TreeNode * newNode = createTreeNode(key, value);
+
+  newNode->parent = parent;
   
   if(parent == NULL)
   {
