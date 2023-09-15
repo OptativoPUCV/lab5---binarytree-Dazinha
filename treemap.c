@@ -119,11 +119,12 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   //genera un par y vemos si existe en el mapa
   Pair *aux = searchTreeMap(tree, key);
 
-  if (aux == NULL)
+  if (aux != NULL)
   {
     return;
   }
-
+  //NO INSERTA DATO REPETIDO
+  
   TreeNode * newNode = createTreeNode(key, value);
   if (newNode == NULL)
   {
