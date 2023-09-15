@@ -204,6 +204,21 @@ TreeNode * minimum(TreeNode * x){
 **Nodo con dos hijos:** Descienda al hijo derecho y obtenga el menor nodo del subárbol (con la función minimum). Reemplace los datos (key,value) de *node* con los del nodo "minimum". Elimine el nodo minimum (para hacerlo puede usar la misma función *removeNode*).
 */
 
+//funcion para ver el máximo
+TreeNode * maximum(TreeNode * x){
+  if (x == NULL)
+  {
+    return NULL;
+  }
+
+  while (x -> right != NULL)
+  {
+    x = x -> right;
+  }
+  
+  return x;
+}
+
 void removeNode(TreeMap * tree, TreeNode* node) {
   if(tree == NULL || node == NULL)
   {
@@ -213,7 +228,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
   //CASO SIN HIJOS
   if (node -> left == NULL && node -> right == NULL)
   { //es la raiz
-    /*
+    
     if (node -> parent == NULL)
     {
       tree -> root = NULL;
@@ -229,16 +244,16 @@ void removeNode(TreeMap * tree, TreeNode* node) {
       
     }
     free(node);
-    */
-    if (node->parent != NULL) {
-        // El nodo tiene un padre, simplemente liberamos el nodo
-        free(node);
-    } else {
-        // El nodo es la raíz del árbol
-        tree->root = NULL;
-        free(node);
-    }
   }
+
+  //CON DOS HIJOS
+  if (node -> left != NULL && node -> right != NULL)
+  {
+    TreeNode *maximumNode = maximum(node -> left);
+    node -> pair = maximumNode -> pair;
+    removeNode(tree, maximumNode);
+  }
+  
   
 }
 
