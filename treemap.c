@@ -135,20 +135,20 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   TreeNode * parent = NULL;
   
   //búsqueda y actualización de parent y tree -> current
-  while (tree -> current != NULL)
+  while (current != NULL)
   {
-    parent = tree -> current;
-    int compare = tree -> lower_than(key , tree -> current -> pair -> key);
+    parent = current;
+    int compare = tree -> lower_than(key , current -> pair -> key);
 
     if (compare == 1)
     {
-      tree -> current = tree -> current -> left;
+      current = tree -> current -> left;
       
     }
 
     else
     {
-      tree -> current = tree -> current -> right;
+      current = tree -> current -> right;
     }  
   }
 
