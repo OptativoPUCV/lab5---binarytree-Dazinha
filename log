@@ -213,3 +213,19 @@ Fri 15 Sep 2023 10:36:04 PM UTC:
  tests:  12|6
 total_score: 15/70
 815bfc4
+Fri 15 Sep 2023 10:41:04 PM UTC: 
+ treemap.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+In file included from test.c:4:
+treemap.c: In function ‘minimum’:
+treemap.c:195:17: error: ‘tree’ undeclared (first use in this function); did you mean ‘free’?
+  195 |   int current = tree -> x;
+      |                 ^~~~
+      |                 free
+treemap.c:195:17: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:195:7: error: unused variable ‘current’ [-Werror=unused-variable]
+  195 |   int current = tree -> x;
+      |       ^~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+8b51ffc

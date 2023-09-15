@@ -119,6 +119,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     return;
   }
 
+  /*
   //genera un par y vemos si existe en el mapa
   Pair *aux = searchTreeMap(tree, key);
 
@@ -127,6 +128,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     return;
   }
   //NO INSERTA DATO REPETIDO
+  */
   
   TreeNode * newNode = createTreeNode(key, value);
   if (newNode == NULL)
@@ -189,6 +191,10 @@ TreeNode * minimum(TreeNode * x){
   {
     return NULL;
   }
+
+  int current = tree -> x;
+
+  
 
   
   return NULL;
