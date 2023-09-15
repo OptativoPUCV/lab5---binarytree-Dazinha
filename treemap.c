@@ -69,6 +69,7 @@ Recuerde hacer que el current apunte al nodo encontrado.
 */
 //if (searchTreeMap(tree, key) == NULL
 //is_equal(TreeMap* tree, void* key1, void* key2) return 1, else return 0
+
 Pair * searchTreeMap(TreeMap * tree, void* key) {
   if (key == NULL || tree == NULL)
   {
@@ -79,8 +80,23 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
   
   while (tree -> current != NULL)
   {
-    int compare = tree -> lower_than(key, tree->current->pair->key);
-
+    int compare = tree -> lower_than(key, tree -> current -> pair -> key);
+    //retorna 1 si key1<key2 y 0 si no
+    //key1 = key
+    //key2 = tree-> current-> pair-> key
+    
+    if(compare == 1)
+    {
+      tree -> current = tree -> current -> left; 
+    }
+    else if (compare == 0){
+      tree -> current = tree -> current -> right;
+    }
+    else if (is_equal(tree, key, tree -> current -> pair -> key) == 1)
+    {
+      return tree -> current -> pair;
+    }
+    /*
     if(compare == 0)
     {
       return tree -> current -> pair;
@@ -93,7 +109,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
     {
       tree -> current = tree -> current -> left;
     }
-    
+    */
   }
   
   return NULL;
