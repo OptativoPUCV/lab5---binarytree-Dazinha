@@ -334,6 +334,12 @@ Pair * nextTreeMap(TreeMap * tree) {
     
   }
 
+  if (next != NULL)
+  {
+    tree -> current = next;
+    return next -> pair;
+  }
+
   return NULL;
 }
 
