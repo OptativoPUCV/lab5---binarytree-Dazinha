@@ -148,7 +148,6 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   TreeNode *current = tree -> root;
   TreeNode * newNode = createTreeNode(key, value);
   
-  //búsqueda y actualización de parent y tree -> current
   while (current != NULL) 
   {
     int compare = tree->lower_than(key, current->pair->key);
@@ -173,10 +172,11 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
         current = current->left;
       }
     } 
+    /*
     else 
     {
-      
-      if (current->right == NULL) {
+      if (current->right == NULL) 
+      {
         current->right = newNode;
         newNode->parent = current;
         tree->current = newNode;
@@ -186,7 +186,9 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
       {
       current = current->right;
       }
+      
     }
+    */
   }
 
   //si arbol vacío
