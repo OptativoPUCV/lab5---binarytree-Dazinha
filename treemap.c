@@ -282,7 +282,8 @@ void eraseTreeMap(TreeMap * tree, void* key){
 }
 
 /*
-6.- Implemente las funciones para recorrer la estructura: Pair* firstTreeMap(TreeMap* tree) retorna el primer **Pair** del mapa (el menor). Pair* nextTreeMap(TreeMap* tree)  retornar el siguiente **Pair** del mapa a partir del puntero TreeNode* current. Recuerde actualizar este puntero.
+6.- Implemente las funciones para recorrer la estructura: 
+Pair* firstTreeMap(TreeMap* tree) retorna el primer **Pair** del mapa (el menor).
 */
 
 Pair * firstTreeMap(TreeMap * tree) {
@@ -302,13 +303,36 @@ Pair * firstTreeMap(TreeMap * tree) {
   return NULL;
 }
 
+//Pair* nextTreeMap(TreeMap* tree)  retornar el siguiente **Pair** del mapa a partir del puntero TreeNode* current. Recuerde actualizar este puntero.
+
 Pair * nextTreeMap(TreeMap * tree) {
   if (tree == NULL)
   {
     return NULL;
   }
 
-  
+  TreeNode *next = NULL;
+  TreeNode *current = tree -> current;
+
+  if (current -> right != NULL)
+  {
+    next = minimum(current -> right);
+
+  }
+  else //if (current -> right == NULL)
+  {
+    TreeNode *parent = current = parent;
+
+    //no es la raiz y current es hijo derecho del padre
+    while (parent != NULL && current == parent -> right)
+    {
+      current = parent;
+      parent = parent -> parent; 
+    }
+    
+    next = parent;
+    
+  }
 
   return NULL;
 }
