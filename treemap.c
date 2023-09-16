@@ -247,7 +247,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
   }
 
   //CON UN HIJO
-  if((node -> left == NULL && node -> right != NULL) || (node -> right == NULL && node -> left != NULL))
+  else if((node -> left == NULL && node -> right != NULL) || (node -> right == NULL && node -> left != NULL))
   {
     TreeNode *son = NULL;
     
@@ -269,6 +269,12 @@ void removeNode(TreeMap * tree, TreeNode* node) {
       {
         node -> parent -> right = son;
       }
+
+      if (son != NULL)
+      {
+        son -> parent = node -> parent;
+      }
+      
     }
     else
     {
@@ -279,7 +285,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
   }
 
   //CON DOS HIJOS
-  if (node -> left != NULL && node -> right != NULL)
+  else if (node -> left != NULL && node -> right != NULL)
   {
     TreeNode *maximumNode = maximum(node -> left);
     node -> pair = maximumNode -> pair;
