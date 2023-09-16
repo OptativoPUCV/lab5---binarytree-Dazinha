@@ -151,50 +151,35 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   while (current != NULL) 
   {
     int compare = tree->lower_than(key, current->pair->key);
-
+  
     if (compare == 0) 
     {
       free(newNode);
       return;
-    } 
-    else if (compare == 1) 
+    }
+    //key1 < key2
+    if (compare == 1) 
     {
       
-      if (current->left == NULL) 
+      if (current -> left == NULL) 
       {
-        current->left = newNode;
-        newNode->parent = current;
-        tree->current = newNode;
+        current -> left = newNode;
+        newNode -> parent = current;
+        tree -> current = newNode;
         return;
       } 
       else 
       {
-        current = current->left;
+        current = current -> left;
       }
     } 
-    /*
-    else 
-    {
-      if (current->right == NULL) 
-      {
-        current->right = newNode;
-        newNode->parent = current;
-        tree->current = newNode;
-        return;
-      } 
-      else
-      {
-      current = current->right;
-      }
-      
-    }
-    */
+
   }
 
-  //si arbol vacío
-  tree->root = newNode;
-  newNode->parent = NULL;
-  tree->current = newNode;
+  //arbol vacío
+  tree -> root = newNode;
+  newNode -> parent = NULL;
+  tree -> current = newNode;
 }
   
 
