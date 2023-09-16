@@ -287,7 +287,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
   //CON DOS HIJOS
   else if (node -> left != NULL && node -> right != NULL)
   {
-    TreeNode *maximumNode = minimum(node -> left);
+    TreeNode *maximumNode = minimum(node -> right);
     node -> pair = maximumNode -> pair;
     removeNode(tree, maximumNode);
   }
