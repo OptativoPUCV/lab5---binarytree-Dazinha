@@ -434,3 +434,19 @@ treemap.c:327:27: error: ‘parent’ may be used uninitialized [-Werror=maybe-u
 cc1: all warnings being treated as errors
 Compilation failed
 cc851cd
+Sat 16 Sep 2023 01:05:58 AM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘nextTreeMap’:
+treemap.c:328:5: error: expected ‘)’ before ‘{’ token
+  328 |     {
+      |     ^
+treemap.c:327:11: note: to match this ‘(’
+  327 |     while (parent != NULL //&& current == parent -> right)
+      |           ^
+treemap.c:335:3: error: expected expression before ‘}’ token
+  335 |   }
+      |   ^
+Compilation failed
+eae40e3
