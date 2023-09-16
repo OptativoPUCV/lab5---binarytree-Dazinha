@@ -110,36 +110,55 @@ Para insertar un dato, primero debe realizar una búsqueda para encontrar donde 
 */
 //is_equal(TreeMap* tree, void* key1, void* key2) return 1, else return 0
 //tree -> lower_than retorna 1 si key1<key2 y 0 si no
+/*
+ TreeNode* current=tree->root;
+  TreeNode* newNode=createTreeNode(key, value);
 
-
+  while(current!=NULL){
+    if(is_equal(tree, key, current->pair->key)){
+      return;
+    }else if(tree->lower_than(key, current->pair->key)){
+      if (current->left==NULL){
+        current->left=newNode;
+        newNode->parent=current;
+        tree->current=newNode;
+        return;
+      }else{
+        current=current->left;
+      }
+    }else{
+      if (current->right==NULL){
+        current->right=newNode;
+        newNode->parent=current;
+        tree->current=newNode;
+        return;
+      }else{
+        current=current->right;
+      }
+    }
+  }
+*/
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
   if (tree == NULL || key == NULL || value == NULL)
   {
     return;
   }
-  
-  TreeNode * newNode = createTreeNode(key, value);
-
-  if (newNode == NULL)
-  {
-    return;
-  }
-  //NO INSERTA DATO REPETIDO
 
   TreeNode *current = tree -> root;
-  TreeNode *parent = NULL;
+  TreeNode * newNode = createTreeNode(key, value);
   
   //búsqueda y actualización de parent y tree -> current
   while (current != NULL)
   {
-    parent = current;
     int compare = tree -> lower_than(key , current -> pair -> key);
 
     if (compare == 1)
     {
-      current = current -> left;
-      
+      current -> left = newNode;
+      newNode -> parent = current;
+      tree -> current = newNode;
+      return;
     }
     else if (current == 0)
     {
@@ -204,21 +223,6 @@ TreeNode * minimum(TreeNode * x){
 **Nodo con dos hijos:** Descienda al hijo derecho y obtenga el menor nodo del subárbol (con la función minimum). Reemplace los datos (key,value) de *node* con los del nodo "minimum". Elimine el nodo minimum (para hacerlo puede usar la misma función *removeNode*).
 */
 
-//funcion para ver el máximo
-TreeNode * maximum(TreeNode * x){
-  if (x == NULL)
-  {
-    return NULL;
-  }
-
-  while (x -> right != NULL)
-  {
-    x = x -> right;
-  }
-  
-  return x;
-}
-
 void removeNode(TreeMap * tree, TreeNode* node) {
   if(tree == NULL || node == NULL)
   {
@@ -227,8 +231,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
 
   //CASO SIN HIJOS
   if (node -> left == NULL && node -> right == NULL)
-  { //es la raiz
-    
+  { 
     if (node -> parent == NULL)
     {
       tree -> root = NULL;
@@ -287,9 +290,9 @@ void removeNode(TreeMap * tree, TreeNode* node) {
   //CON DOS HIJOS
   else if (node -> left != NULL && node -> right != NULL)
   {
-    TreeNode *maximumNode = minimum(node -> right);
-    node -> pair = maximumNode -> pair;
-    removeNode(tree, maximumNode);
+    TreeNode *minimumNode = minimum(node -> right);
+    node -> pair = minimumNode -> pair;
+    removeNode(tree, minimumNode);
   }
   
 }
