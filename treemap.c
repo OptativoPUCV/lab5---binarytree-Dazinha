@@ -87,6 +87,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
     
     if (compare == 0)
     {
+      
       if (is_equal(tree, key, tree -> current -> pair -> key) == 1) {
         return tree -> current -> pair;
       }
@@ -94,6 +95,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
       tree -> current = tree -> current -> right; 
       
     } 
+      
     else //if (compare == 1)
     {
       tree -> current = tree -> current -> left;
@@ -110,34 +112,6 @@ Para insertar un dato, primero debe realizar una búsqueda para encontrar donde 
 */
 //is_equal(TreeMap* tree, void* key1, void* key2) return 1, else return 0
 //tree -> lower_than retorna 1 si key1<key2 y 0 si no
-/*
- TreeNode* current=tree->root;
-  TreeNode* newNode=createTreeNode(key, value);
-
-  while(current!=NULL){
-    if(is_equal(tree, key, current->pair->key)){
-      return;
-    }else if(tree->lower_than(key, current->pair->key)){
-      if (current->left==NULL){
-        current->left=newNode;
-        newNode->parent=current;
-        tree->current=newNode;
-        return;
-      }else{
-        current=current->left;
-      }
-    }else{
-      if (current->right==NULL){
-        current->right=newNode;
-        newNode->parent=current;
-        tree->current=newNode;
-        return;
-      }else{
-        current=current->right;
-      }
-    }
-  }
-*/
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
   if (tree == NULL || key == NULL || value == NULL)
@@ -157,6 +131,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
       free(newNode);
       return;
     }
+    
     //key1 < key2
     if (compare == 1) 
     {
@@ -168,16 +143,19 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
         tree -> current = newNode;
         return;
       } 
+        
       else 
       {
         current = current -> left;
       }
+      
     } 
 
   }
 
   //arbol vacío
   tree -> root = newNode;
+  
   newNode -> parent = NULL;
   tree -> current = newNode;
 }
@@ -221,16 +199,22 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     {
       tree -> root = NULL;
     }
-    else{
+      
+    else
+    {
+      
       if (node -> parent -> left == node)
       {
         node -> parent -> left = NULL;
       }
-      else{
+        
+      else
+      {
         node -> parent -> right = NULL;
       }
       
     }
+    
     free(node);
   }
 
@@ -243,35 +227,41 @@ void removeNode(TreeMap * tree, TreeNode* node) {
   }
 
   //CON UN HIJO
-  else if((node -> left == NULL && node -> right != NULL) || (node -> right == NULL && node -> left != NULL))
+  else //if((node -> left == NULL && node -> right != NULL) || (node -> right == NULL && node -> left != NULL))
   {
     TreeNode *son = NULL;
-    
+
+    //insertamos hijo
     if (node -> left != NULL)
     {
       son = node -> left;
     }
-    else{
+    else
+    {
       son = node -> right;
     }
 
+    //insertamos parent
     if (node -> parent != NULL)
     {
+      //si es hijo izq del padre
       if (node -> parent -> left == node)
       {
         node -> parent -> left = son;
       }
       else
+      //si es hijo derecho del padre
       {
         node -> parent -> right = son;
       }
-
+      
       if (son != NULL)
       {
         son -> parent = node -> parent;
       }
       
     }
+      
     else
     {
       tree -> root = son;  
@@ -301,6 +291,14 @@ Pair * firstTreeMap(TreeMap * tree) {
     return NULL;
   }
 
+  TreeNode *first = minimum(tree -> root);
+
+  if( first != NULL)
+  {
+    tree -> current = first;
+    return first -> pair;
+  }
+
   return NULL;
 }
 
@@ -309,6 +307,8 @@ Pair * nextTreeMap(TreeMap * tree) {
   {
     return NULL;
   }
+
+  
 
   return NULL;
 }
