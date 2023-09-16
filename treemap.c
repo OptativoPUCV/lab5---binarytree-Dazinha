@@ -321,7 +321,7 @@ Pair * nextTreeMap(TreeMap * tree) {
   }
   else //if (current -> right == NULL)
   {
-    TreeNode *parent = current = parent;
+    TreeNode *parent = current -> parent;
 
     //no es la raiz y current es hijo derecho del padre
     while (parent != NULL) //&& current == parent -> right)
