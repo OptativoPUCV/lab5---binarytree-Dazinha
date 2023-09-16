@@ -375,14 +375,14 @@ Pair * upperBound(TreeMap * tree, void* key) {
     {
       ub = current;
       current = current -> left;
-      
     }
+    current = current -> right;
 
-    else
-    {
-      current = current -> right;
-    }
-    
+  }
+
+  if (ub != NULL)
+  {
+    return ub -> pair;
   }
   
   return NULL;
