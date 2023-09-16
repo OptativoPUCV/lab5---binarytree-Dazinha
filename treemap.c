@@ -373,13 +373,14 @@ Pair * upperBound(TreeMap * tree, void* key) {
     }
     else if (compare == 1)
     {
-      current = current -> right;
+      ub = current;
+      current = current -> left;
+      
     }
 
     else
     {
-      ub = current;
-      current = current -> left;
+      current = current -> right;
     }
     
   }
