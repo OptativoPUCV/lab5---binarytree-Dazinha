@@ -149,42 +149,50 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   TreeNode * newNode = createTreeNode(key, value);
   
   //búsqueda y actualización de parent y tree -> current
-    while (current != NULL) {
-        int compare = tree->lower_than(key, current->pair->key);
+  while (current != NULL) 
+  {
+    int compare = tree->lower_than(key, current->pair->key);
 
-        if (compare == 0) {
-            // La clave ya existe, no se permite la inserción de claves duplicadas
-            free(newNode);
-            return;
-        } else if (compare == 1) {
-            // La nueva clave es menor, debemos ir a la izquierda
-            if (current->left == NULL) {
-                // Insertar el nuevo nodo a la izquierda
-                current->left = newNode;
-                newNode->parent = current;
-                tree->current = newNode;
-                return;
-            } else {
-                current = current->left;
-            }
-        } else {
-            // La nueva clave es mayor, debemos ir a la derecha
-            if (current->right == NULL) {
-                // Insertar el nuevo nodo a la derecha
-                current->right = newNode;
-                newNode->parent = current;
-                tree->current = newNode;
-                return;
-            } else {
-                current = current->right;
-            }
-        }
+    if (compare == 0) 
+    {
+      free(newNode);
+      return;
+    } 
+    else if (compare == 1) 
+    {
+      
+      if (current->left == NULL) 
+      {
+        current->left = newNode;
+        newNode->parent = current;
+        tree->current = newNode;
+        return;
+      } 
+      else 
+      {
+        current = current->left;
+      }
+    } 
+    else 
+    {
+      
+      if (current->right == NULL) {
+        current->right = newNode;
+        newNode->parent = current;
+        tree->current = newNode;
+        return;
+      } 
+      else
+      {
+      current = current->right;
+      }
     }
+  }
 
-    // Si llegamos aquí, significa que el árbol estaba vacío
-    tree->root = newNode;
-    newNode->parent = NULL;
-    tree->current = newNode;
+  //si arbol vacío
+  tree->root = newNode;
+  newNode->parent = NULL;
+  tree->current = newNode;
 }
   
 
