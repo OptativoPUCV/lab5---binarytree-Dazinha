@@ -171,28 +171,6 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     }  
   }
 
-  //inserción en parent
-
-  newNode->parent = parent;
-  
-  if(parent == NULL)
-  {
-    tree -> root = newNode;
-  }
-  else
-  {
-    int compare = tree -> lower_than(key , parent -> pair -> key);
-
-    if(compare == 1)
-    {
-      parent -> left = newNode;
-    }
-    else
-    {
-      parent -> right = newNode;
-    }
-    
-  }
 
   tree -> current = newNode;
 }
